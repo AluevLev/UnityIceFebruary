@@ -2,14 +2,15 @@
 namespace UnityIceFebruary.HelpTools.Debuggers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     public static class ProxyGeneratorDebugger
     {
-        public static void DebugInformationAboutProxyableTypes(Type[] proxyableTypes)
+        public static void DebugInformationAboutProxyableTypes(int proxyableTypesCount, IEnumerable<Type> proxyableTypes)
         {
             Debugger.Log("Information about proxyable types:");
-            Debugger.Log($"Number of types: {proxyableTypes.Length}");
+            Debugger.Log($"Number of types: {proxyableTypesCount}");
             Debugger.Log($"Types: \n{string.Join("\n", proxyableTypes.Select(type => type.Name))}");
         }
         public static void DebugGeneratedProxy(string fileName) => Debugger.Log($"Proxy generated: {fileName}");

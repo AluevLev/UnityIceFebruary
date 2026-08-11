@@ -1,9 +1,8 @@
 namespace UnityIceFebruary
 {
     using IceFebruary;
-    using UnityIceFebruary.Components;
 
-    public abstract class UnityBaseEntity<T> : BaseEntity, IUnityAnalog<T> where T : UnityEngine.Object
+    public abstract class UnityBaseEntity<T> : BaseEntity where T : UnityEngine.Object
     {
         public T Original { get; private init; }
         public override bool Enabled

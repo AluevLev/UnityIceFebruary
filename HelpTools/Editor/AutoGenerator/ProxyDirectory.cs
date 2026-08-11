@@ -1,47 +1,43 @@
 namespace UnityIceFebruary.HelpTools.AutoGenerator
 {
-    using IceFebruary.Proxy;
     using System;
-    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using UnityEngine;
 
     public static class ProxyDirectory
     {
-        private static readonly string _autoGenerationDirectoryPath = "Auto Generated";
-        private static readonly string _proxyPath = Path.Combine(_autoGenerationDirectoryPath, "Proxy");
-        private static readonly string _fieldProxyPath = Path.Combine(_autoGenerationDirectoryPath, "Field Proxy");
-        private static readonly string _interfaceProxyPath = Path.Combine(_autoGenerationDirectoryPath, "Interface Proxy");
-        private static readonly string _genericVariantProxyPath = Path.Combine(_autoGenerationDirectoryPath, "Generic Variant");
-        private static readonly string _scriptableObjectProxyPath = Path.Combine(_autoGenerationDirectoryPath, "Scriptable Object Proxy");
-        private static readonly string _staticDictionariesPath = Path.Combine(_autoGenerationDirectoryPath, "Static Dictionaries");
-        private static readonly Dictionary<Type, string> _pathsOfTypes = new()
+        private static readonly string _autoGenerationDirectoryPath = GetFullDirectory("Auto Generated");
+        private static readonly ProxyType[] _proxyTypes = ((ProxyType[])Enum.GetValues(typeof(ProxyType)))
+            .Where(proxyType => proxyType != ProxyType.None)
+            .ToArray();
+        public static string GetPath(ProxyType proxyTypes)
         {
-            { typeof(Proxy), _proxyPath },
-            { typeof(FieldProxy), _fieldProxyPath },
-            { typeof(InterfaceProxy), _interfaceProxyPath },
-            { typeof(GenericVariantProxy), _genericVariantProxyPath },
-            { typeof(ScriptableObjectProxy), _scriptableObjectProxyPath },
-            { typeof(StaticProxy), _staticDictionariesPath }
-        };
-        public static string GetPath(Type type) => _pathsOfTypes.TryGetValue(type, out string path) ? path.GetFullDirectory() : null;
+            string folder = proxyTypes switch
+            {
+                ProxyType.Proxy => "Proxy",
+                ProxyType.FieldProxy => "Field Proxy",
+                ProxyType.InterfaceProxy => "Interface Proxy",
+                ProxyType.GenericVariantProxy => "Generic Variant Proxy",
+                ProxyType.ScriptableObjectProxy => "Scriptable Object Proxy",
+                ProxyType.StaticProxy => "Static Dictionaries",
+                _ => null
+            };
+
+            return folder == null ? null : Path.Combine(_autoGenerationDirectoryPath, folder);
+        }
         public static void RecoveryDirectories()
         {
             RecoveryDirectory(_autoGenerationDirectoryPath);
-            RecoveryDirectory(_proxyPath);
-            RecoveryDirectory(_fieldProxyPath);
-            RecoveryDirectory(_interfaceProxyPath);
-            RecoveryDirectory(_genericVariantProxyPath);
-            RecoveryDirectory(_scriptableObjectProxyPath);
-            RecoveryDirectory(_staticDictionariesPath);
+
+            foreach (ProxyType path in _proxyTypes)
+                RecoveryDirectory(GetPath(path));
         }
         private static void RecoveryDirectory(string directory)
         {
-            string directoryPath = directory.GetFullDirectory();
-
-            if (!Directory.Exists(directoryPath))
-                Directory.CreateDirectory(directoryPath);
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
         }
-        private static string GetFullDirectory(this string directory) => Path.Combine(Application.dataPath, directory);
+        private static string GetFullDirectory(string directory) => Path.Combine(Application.dataPath, directory);
     }
 }

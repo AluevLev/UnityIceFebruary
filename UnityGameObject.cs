@@ -20,16 +20,19 @@ namespace UnityIceFebruary
         {
             Transform = UnityMethods.Upsert<UnityEngine.Transform, ITransform>(gameObject.transform);
         }
-        public IRootConfig GetRootConfig()
+        public bool TryGetRootConfig<T>(out T rootConfig) where T : class
         {
             if (!Original.TryGetComponent(out UnityInfo info))
-                return null;
+            {
+                rootConfig = null;
+                return false;
+            }
 
-            IRootConfig rootConfig = info.ToPoco();
+            rootConfig = info.ToPoco() as T;
 
             UnityEngine.Object.Destroy(info);
 
-            return rootConfig;
+            return true;
         }
     }
 }

@@ -57,7 +57,7 @@ namespace UnityIceFebruary.HelpTools.AutoGenerator
         {
             stringBuilder.Append($"    [UnityEngine.{(elementType.IsInterface ? "SerializeReference, UnityIceFebruary.InterfaceImplementation.InterfaceImplementation" : "SerializeField")}] private ");
 
-            string elementTypeName = string.Empty;
+            string elementTypeName;
 
             bool isElementGenericVariant = elementType.IsGenericVariant();
 
