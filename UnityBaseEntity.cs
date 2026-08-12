@@ -22,14 +22,11 @@ namespace UnityIceFebruary
 
             UnityEngine.Object.Destroy(Original);
         }
-        protected UnityBaseEntity(T original, bool? enabled = null)
+        protected UnityBaseEntity(T original)
         {
             Original = original;
 
-            if (enabled.HasValue)
-                Enabled = enabled.Value;
-            else
-                _enabled = UnityToggler.Get(Original);
+            _enabled = UnityToggler.Get(Original);
         }
     }
 }
