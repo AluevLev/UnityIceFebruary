@@ -1,16 +1,19 @@
 namespace UnityIceFebruary.HelpTools.AutoGenerator
 {
     using System;
+    using System.ComponentModel;
     using System.IO;
     using System.Linq;
     using UnityEngine;
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public static class ProxyDirectory
     {
         private static readonly string _autoGenerationDirectoryPath = GetFullDirectory("Auto Generated");
         private static readonly ProxyType[] _proxyTypes = ((ProxyType[])Enum.GetValues(typeof(ProxyType)))
             .Where(proxyType => proxyType != ProxyType.None)
             .ToArray();
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public static string GetPath(ProxyType proxyTypes)
         {
             string folder = proxyTypes switch
@@ -19,13 +22,14 @@ namespace UnityIceFebruary.HelpTools.AutoGenerator
                 ProxyType.FieldProxy => "Field Proxy",
                 ProxyType.InterfaceProxy => "Interface Proxy",
                 ProxyType.GenericVariantProxy => "Generic Variant Proxy",
-                ProxyType.ScriptableObjectProxy => "Scriptable Object Proxy",
+                ProxyType.DataObjectProxy => "Data Object Proxy",
                 ProxyType.StaticProxy => "Static Dictionaries",
                 _ => null
             };
 
             return folder == null ? null : Path.Combine(_autoGenerationDirectoryPath, folder);
         }
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public static void RecoveryDirectories()
         {
             RecoveryDirectory(_autoGenerationDirectoryPath);

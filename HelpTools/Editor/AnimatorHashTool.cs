@@ -1,15 +1,17 @@
 namespace UnityIceFebruary.HelpTools
 {
+    using System.ComponentModel;
     using UnityEditor;
     using UnityEngine;
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public sealed class AnimatorHashTool : EditorWindow
     {
         private string _inputText;
         private int _calculatedHash;
 
         [MenuItem("Tools/Animator hash tool")]
-        public static void ShowWindow()
+        private static void ShowWindow()
         {
             AnimatorHashTool window = GetWindow<AnimatorHashTool>("Hash Tool");
             window.minSize = new(300, 100);

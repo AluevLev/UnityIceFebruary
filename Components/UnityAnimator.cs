@@ -5,12 +5,23 @@ namespace UnityIceFebruary.Components
     using System;
     using System.Runtime.CompilerServices;
     using UnityIceFebruary;
+
     using Animator = UnityEngine.Animator;
 
+    /// <summary>
+    /// Bridge component for controlling the Unity animator.
+    /// </summary>
     public sealed class UnityAnimator : UnityBaseEntity<Animator>, IAnimator
     {
+        /// <summary>
+        /// Creates a new component for controlling the Unity animator.
+        /// </summary>
         [FieldProxy(typeof(IAnimator))]
         public UnityAnimator(Animator animator) : base(animator) { }
+
+        /// <summary>
+        /// Returns the current value of the variable by its hash.
+        /// </summary>
         public T Get<T>(int hash) where T : struct
         {
             Type type = typeof(T);
@@ -35,6 +46,10 @@ namespace UnityIceFebruary.Components
 
             return default;
         }
+
+        /// <summary>
+        /// Sets a new value for the animation parameter.
+        /// </summary>
         public void Set<T>(int hash, T value) where T : struct
         {
             Type type = typeof(T);
@@ -46,6 +61,10 @@ namespace UnityIceFebruary.Components
             if (type == typeof(float))
                 Original.SetFloat(hash, Unsafe.As<T, float>(ref value));
         }
-        public void SetTrigger(int hash) => Original.SetTrigger(hash);
+
+        /// <summary>
+        /// Activates an animation trigger by its hash.
+        /// </summary>
+        public void ActivateTrigger(int hash) => Original.SetTrigger(hash);
     }
 }

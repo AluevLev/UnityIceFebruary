@@ -12,6 +12,10 @@ namespace UnityIceFebruary
     using UnityContactFilter2D = UnityEngine.ContactFilter2D;
     using UnityVector2 = UnityEngine.Vector2;
 
+    /// <summary>
+    /// Unity realization of the main interface for controlling physics and overlapping.
+    /// Controls the execution of overlapping.
+    /// </summary>
     public sealed class UnityPhysics2D : BaseEntity, IPhysics2D
     {
         private UnityCollider2D[] _collidersBuffer;
@@ -23,11 +27,23 @@ namespace UnityIceFebruary
 
         private UnityVector2 _rectangleSize;
         private float _circleRadius;
+
+        /// <summary>
+        /// Creates a new Unity realization of the main interface for controlling physics and overlapping.
+        /// </summary>
         public UnityPhysics2D(int collidersBufferLength)
         {
             _collidersBuffer = new UnityCollider2D[collidersBufferLength.ClampForArray()];
         }
+
+        /// <summary>
+        /// Scans physical objects in a certain area.
+        /// </summary>
         public int Overlap(IShape shape, Vector2 position, Rotor2 rotor, ContactFilter2D contactFilter2D, Component<ICollider2D>[] result = null) => Overlap(shape, position, rotor.ToAngle(false), contactFilter2D, result);
+
+        /// <summary>
+        /// Scans physical objects in a certain area.
+        /// </summary>
         public int Overlap(IShape shape, Vector2 position, float angle, ContactFilter2D contactFilter2D, Component<ICollider2D>[] result = null)
         {
             if (shape == null)

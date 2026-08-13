@@ -2,8 +2,14 @@ namespace UnityIceFebruary
 {
     using UnityEngine;
 
+    /// <summary>
+    /// Static class for manipulating activity objects in Unity.
+    /// </summary>
     public static class UnityToggler
     {
+        /// <summary>
+        /// Assigns activity to a Unity object.
+        /// </summary>
         public static void Set(Object target, bool value)
         {
             switch (target)
@@ -31,6 +37,9 @@ namespace UnityIceFebruary
             }
         }
 
+        /// <summary>
+        /// Returns the activity to the Unity object.
+        /// </summary>
         public static bool Get(Object target) => target switch
         {
             GameObject go => go.activeSelf,

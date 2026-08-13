@@ -2,14 +2,17 @@ namespace UnityIceFebruary.InterfaceImplementation
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using UnityEditor;
     using UnityEngine;
 
-    [CustomPropertyDrawer(typeof(InterfaceImplementation))]
+    [CustomPropertyDrawer(typeof(InterfaceImplementation)), EditorBrowsable(EditorBrowsableState.Never)]
     public sealed class InterfaceImplementationDrawer : PropertyDrawer
     {
         private readonly int spacing = 2;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             if (property.managedReferenceFullTypename == null)
@@ -66,6 +69,7 @@ namespace UnityIceFebruary.InterfaceImplementation
             EditorGUI.EndProperty();
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             if (property.managedReferenceFullTypename == null || !property.isExpanded || string.IsNullOrEmpty(property.managedReferenceFullTypename))
@@ -88,7 +92,6 @@ namespace UnityIceFebruary.InterfaceImplementation
 
             return height;
         }
-
         private void ShowTypeMenu(SerializedProperty property)
         {
             Type targetType = fieldInfo.FieldType;
@@ -141,7 +144,6 @@ namespace UnityIceFebruary.InterfaceImplementation
 
             menu.ShowAsContext();
         }
-
         private void Apply(UnityEngine.Object[] targets, string path, object val)
         {
             Undo.RecordObjects(targets, "Change Type");
@@ -158,7 +160,6 @@ namespace UnityIceFebruary.InterfaceImplementation
                 }
             }
         }
-
         private string GetFriendlyName(Type type)
         {
             string typeName = type.Name;

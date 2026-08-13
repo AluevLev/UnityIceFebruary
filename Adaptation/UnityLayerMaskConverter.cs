@@ -5,6 +5,9 @@ namespace UnityIceFebruary.Adaptation
     using IceLayerMask = IceFebruary.Physics.LayerMask;
     using UnityLayerMask = UnityEngine.LayerMask;
 
+    /// <summary>
+    /// Static class for converting <see cref="IceLayerMask"/> structure to <see cref="UnityLayerMask"/> and back.
+    /// </summary>
     public static class UnityLayerMaskConverter
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

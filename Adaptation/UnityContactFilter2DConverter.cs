@@ -5,6 +5,9 @@ namespace UnityIceFebruary.Adaptation
     using IceLayerMask = IceFebruary.Physics.LayerMask;
     using UnityContactFilter2D = UnityEngine.ContactFilter2D;
 
+    /// <summary>
+    /// Static class for converting <see cref="IceContactFilter2D"/> structure to <see cref="UnityContactFilter2D"/> and back.
+    /// </summary>
     public static class UnityContactFilter2DConverter
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

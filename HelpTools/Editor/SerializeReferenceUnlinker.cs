@@ -1,10 +1,12 @@
 namespace UnityIceFebruary.HelpTools
 {
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Runtime.CompilerServices;
     using UnityEditor;
     using UnityEngine;
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public static class SerializeReferenceUnlinker
     {
         private static readonly HashSet<object> _trackedReferences = new(ReferenceEqualityComparer.Default);

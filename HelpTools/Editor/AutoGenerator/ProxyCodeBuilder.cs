@@ -4,11 +4,14 @@ namespace UnityIceFebruary.HelpTools.AutoGenerator
     using IceFebruary.Proxy;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Text;
     using UnityIceFebruary.HelpTools.Debuggers;
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public static class ProxyCodeBuilder
     {
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public static string GetInterfaceProxyCode(Type type)
         {
             StringBuilder stringBuilder = new();
@@ -22,6 +25,7 @@ namespace UnityIceFebruary.HelpTools.AutoGenerator
 
             return stringBuilder.ToString();
         }
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public static string GetFieldProxyCode(Type type, FieldProxy fieldProxy)
         {
             StringBuilder stringBuilder = new();
@@ -52,7 +56,8 @@ namespace UnityIceFebruary.HelpTools.AutoGenerator
 
             return stringBuilder.ToString();
         }
-        public static string GetScriptableObjectProxyCode(Type type)
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static string GetDataObjectProxyCode(Type type)
         {
             StringBuilder stringBuilder = new();
 
@@ -64,6 +69,7 @@ namespace UnityIceFebruary.HelpTools.AutoGenerator
 
             return stringBuilder.ToString();
         }
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public static string GetGenericVariantProxyCode(Type type)
         {
             StringBuilder stringBuilder = new();
@@ -77,6 +83,7 @@ namespace UnityIceFebruary.HelpTools.AutoGenerator
 
             return stringBuilder.ToString();
         }
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public static string GetProxyCode(Type type)
         {
             StringBuilder stringBuilder = new();
@@ -88,6 +95,7 @@ namespace UnityIceFebruary.HelpTools.AutoGenerator
 
             return stringBuilder.ToString();
         }
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public static string GetUnityMatchComponentCode(IEnumerable<string> pairs)
         {
             StringBuilder stringBuilder = new();

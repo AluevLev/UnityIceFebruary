@@ -1,5 +1,8 @@
 namespace UnityIceFebruary.HelpTools.AutoGenerator
 {
+    using System.ComponentModel;
+
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public enum ProxyType
     {
         None,
@@ -7,7 +10,7 @@ namespace UnityIceFebruary.HelpTools.AutoGenerator
         FieldProxy,
         InterfaceProxy,
         GenericVariantProxy,
-        ScriptableObjectProxy,
+        DataObjectProxy,
         StaticProxy
     }
 }

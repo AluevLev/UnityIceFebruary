@@ -1,16 +1,18 @@
 namespace UnityIceFebruary.HelpTools
 {
     using IceFebruary.Space;
+    using System.ComponentModel;
     using UnityEditor;
     using UnityEngine;
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public sealed class AngleToRotorConverter : EditorWindow
     {
         private float _inputAngle;
         private Rotor2 _carculatedRotor;
 
         [MenuItem("Tools/Angle to rotor converter")]
-        public static void ShowWindow()
+        private static void ShowWindow()
         {
             AngleToRotorConverter window = GetWindow<AngleToRotorConverter>("Angle to rotor converter");
             window.minSize = new(300, 150);

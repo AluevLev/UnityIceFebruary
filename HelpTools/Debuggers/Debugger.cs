@@ -2,12 +2,15 @@
 namespace UnityIceFebruary.HelpTools.Debuggers
 {
     using UnityEngine;
-    using UnityIceFebruary.Adaptation;
 
-    using IceVector2 = IceFebruary.Space.Vector2;
-
+    /// <summary>
+    /// Static class for outputting logs to the console.
+    /// </summary>
     public static class Debugger
     {
+        /// <summary>
+        /// Displays a message in the console.
+        /// </summary>
         public static void Log(string message, LogType logType = LogType.Message)
         {
             switch (logType)
@@ -25,13 +28,6 @@ namespace UnityIceFebruary.HelpTools.Debuggers
                     break;
             }
         }
-        public static void DrawLine(IceVector2 a, IceVector2 b, float duration) => Debug.DrawLine(a.ToUnity(), b.ToUnity(), Color.green, duration);
-    }
-    public enum LogType
-    {
-        Message,
-        Warning,
-        Error
     }
 }
 #endif

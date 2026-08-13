@@ -1,11 +1,12 @@
 namespace UnityIceFebruary.HelpTools
 {
+    using System.ComponentModel;
     using UnityEditor;
     using UnityEngine;
     using UnityIceFebruary.Adaptation;
     using UnityIceFebruary.HelpTools.Debuggers;
 
-    [InitializeOnLoad]
+    [InitializeOnLoad, EditorBrowsable(EditorBrowsableState.Never)]
     public static class MousePositionFinder
     {
         private static Vector2 _lastMousePosition;
