@@ -55,6 +55,7 @@ To remove manual component wiring, the project features a compile-time code auto
    3. Constructor Inspection: Inspects available constructors via GetParameters() to automatically output serialized class properties mapped with an underscore prefix (_fieldName).
    4. Code Emission: Compiles raw string buffers via ProxyCodeBuilder and routes files into the targeted Assets/Auto Generated/ folder structure:
 
+```text
 Assets/Auto Generated/
 ├── Interface Proxy/       # Mapped interfaces providing ToPoco() translation utilities
 ├── Field Proxy/           # Serialized components with built-in reference hooks
@@ -62,6 +63,7 @@ Assets/Auto Generated/
 ├── Proxy/                 # Configuration classes inheriting from UnityInfo and IRootConfig
 ├── Generic Variant Proxy/ # Specialized wrappers automatically generated for generic types
 └── Static Dictionaries/   # Houses UnityMatchObject and static factory reference mappings
+```
 
 ## 2. Interface Polymorphism plugin (InterfaceImplementation)
 
