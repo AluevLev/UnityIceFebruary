@@ -9,17 +9,14 @@ namespace UnityIceFebruary.HelpTools
     {
         private LayerMask _selectedLayers;
 
-        [MenuItem("Tools/LayerMask to int converter")]
+        [MenuItem("Tools/Layer mask to int converter")]
         private static void ShowWindow()
         {
-            LayerMastToIntegerConverter window = GetWindow<LayerMastToIntegerConverter>("LayerMask to int converter");
+            LayerMastToIntegerConverter window = GetWindow<LayerMastToIntegerConverter>("Layer mask to int converter");
             window.minSize = new(300, 100);
         }
         private void OnGUI()
         {
-            GUILayout.Label("LayerMask to int converter", EditorStyles.boldLabel);
-            EditorGUILayout.Space();
-
             _selectedLayers = EditorGUILayoutLayerMaskField("Layers:", _selectedLayers);
 
             EditorGUILayout.Space();

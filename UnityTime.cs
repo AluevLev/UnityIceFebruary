@@ -6,7 +6,8 @@ namespace UnityIceFebruary
     using UnityEngine;
 
     /// <summary>
-    /// Untiy realization of the core time management interface. Controls execution of regular and fixed update frames.
+    /// Untiy realization of the core time management interface.
+    /// Controls execution of regular and fixed update frames.
     /// </summary>
     public sealed class UnityTime : BaseEntity, ITime
     {
@@ -14,7 +15,8 @@ namespace UnityIceFebruary
         private readonly EntityFastArray<IFixedFrame> _fixedFrameArray;
 
         /// <summary>
-        /// Creates a new untiy realization of the core time management interface. Controls execution of regular and fixed update frames.
+        /// Creates a new untiy realization of the core time management interface.
+        /// Controls execution of regular and fixed update frames.
         /// </summary>
         public UnityTime(int startArraySize)
         {

@@ -5,30 +5,23 @@ namespace UnityIceFebruary.HelpTools
     using UnityEngine;
 
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public sealed class AnimatorHashTool : EditorWindow
+    public sealed class AnimatorNameToHashConverter : EditorWindow
     {
         private string _inputText;
         private int _calculatedHash;
 
-        [MenuItem("Tools/Animator hash tool")]
+        [MenuItem("Tools/Animator name to hash converter")]
         private static void ShowWindow()
         {
-            AnimatorHashTool window = GetWindow<AnimatorHashTool>("Hash Tool");
+            AnimatorNameToHashConverter window = GetWindow<AnimatorNameToHashConverter>("Animator name to hash converter");
             window.minSize = new(300, 100);
         }
         private void OnGUI()
         {
-            GUILayout.Label("Hash Generator for Animator", EditorStyles.boldLabel);
-            EditorGUILayout.Space();
-
-            EditorGUI.BeginChangeCheck();
             _inputText = EditorGUILayout.TextField("Field name:", _inputText);
-
-            if (EditorGUI.EndChangeCheck() || _calculatedHash == 0)
-                _calculatedHash = Animator.StringToHash(_inputText);
+            _calculatedHash = Animator.StringToHash(_inputText);
 
             EditorGUILayout.Space();
-
             EditorGUILayout.LabelField("Result:", EditorStyles.boldLabel, GUILayout.Width(110));
             EditorGUILayout.SelectableLabel(_calculatedHash.ToString(), EditorStyles.textField, GUILayout.Height(18));
         }
