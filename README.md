@@ -100,4 +100,4 @@ This bridge repository is designed to be paired directly with the core logic lay
 
 * Language Specification: C# 9.0+ / Unsafe Code block processing enabled.
 * Host Engine Target: Unity LTS releases (full compatibility with modern runtime compilation standards).
-* Dependencies: Requires the core companion IceFebruary.Pure assembly reference package inside your project folder layout.
+* Dependencies: Requires the core companion IceFebruary assembly reference package inside your project folder layout.
