@@ -15,7 +15,9 @@ While the core logic repository operates strictly within a pure C# memory space 
 
 ------------------------------
 
-## 🛠 Runtime & Interface Mapping Subsystems## 1. The Execution Clock (UnityBaseGameAssembler)
+## 🛠 Runtime & Interface Mapping Subsystems
+
+## 1. The Execution Clock (UnityBaseGameAssembler)
 
 Acts as the heartbeat that hooks the isolated logic core directly into Unity's frame updating pipeline:
 
